@@ -9,7 +9,6 @@ const Styles = styled.div`
   }
 `;
 const ArticlePreview = (props) => {
-  console.log(props.article);
   return (
     <Styles>
       <Row>
