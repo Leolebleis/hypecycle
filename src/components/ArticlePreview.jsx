@@ -5,7 +5,14 @@ import Col from "react-bootstrap/Col";
 import styled from "styled-components";
 
 const Styles = styled.div`
-  .preview {
+  .card {
+    background-color: transparent;
+    border-radius: 0;
+    border-color: rgb(214, 78, 138);
+  }
+
+  code {
+    font-size: 20px;
   }
 `;
 const ArticlePreview = (props) => {
@@ -13,8 +20,8 @@ const ArticlePreview = (props) => {
     <Styles>
       <Row>
         <Col className="col-12">
-          <Card className="mt-5 px-5">
-            <h1>{props.article.title}</h1>
+          <Card className="mt-5 px-5 hvr-sweep-to-right">
+            <code>{props.article.title}</code>
             <p>{props.article.description}</p>
           </Card>
         </Col>

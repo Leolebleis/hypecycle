@@ -7,7 +7,7 @@ const Article = (props) => {
 
   return (
     <>
-      <h1>{article.title}</h1>
+      <code>{article.title}</code>
       <p>
         <i>{article.createdAt}</i>
       </p>
