@@ -11,7 +11,7 @@ const Article = (props) => {
       <p>
         <i>{article.createdAt}</i>
       </p>
-      <img src={article.image} />
+      <img src={article.image} alt="header for article" />
 
       <br />
       <ReactMarkdown source={markdownFormat(article.content)} />
