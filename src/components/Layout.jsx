@@ -1,5 +1,13 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
+
+const Global = createGlobalStyle`
+    .modal-90w {
+    width: 95%;
+    max-width: 100%;
+  }
+
+`;
 
 const Styles = styled.div`
   a {
@@ -16,14 +24,17 @@ const Styles = styled.div`
 
     &:active {
       background-color: rgb(214, 78, 138);
-
     }
-
   }
 `;
 
 const Layout = (props) => {
-  return <Styles>{props.children}</Styles>;
+  return (
+    <>
+      <Global />
+      <Styles>{props.children}</Styles>
+    </>
+  );
 };
 
 export default Layout;

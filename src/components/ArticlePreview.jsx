@@ -15,6 +15,10 @@ const Styles = styled.div`
   .hashtag {
     color: grey;
     font-size: 15px;
+
+    &:hover {
+      color: darkgrey;
+    }
   }
 
   code {
@@ -48,7 +52,7 @@ const ArticlePreview = (props) => {
               </Row>
               <p>
                 {article.hashtags.map((hashtag) => (
-                  <span className="hashtag">
+                  <span className="hashtag" key={hashtag}>
                     <i>#{hashtag} </i>
                   </span>
                 ))}
