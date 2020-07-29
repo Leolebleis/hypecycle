@@ -35,7 +35,7 @@ const Article = (props) => {
       />
 
       <br />
-      <ReactMarkdown source={markdownFormat(article.content)} />
+      <ReactMarkdown value="" source={markdownFormat(article.content)} />
     </Styles>
   );
 };

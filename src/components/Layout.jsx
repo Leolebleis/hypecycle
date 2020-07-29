@@ -2,18 +2,13 @@ import React from "react";
 import styled, { createGlobalStyle } from "styled-components";
 
 const Global = createGlobalStyle`
-    .modal-90w {
-    width: 95%;
-    max-width: 100%;
+  .modal-90w {
+    width: 80%;
+    max-width: 90%;
+    min-height: 100%;
+
   }
 
-`;
-
-const Styles = styled.div`
-  a {
-    text-decoration: none;
-    color: #ffffff;
-  }
   .btn {
     background-color: transparent;
     border-color: rgb(214, 78, 138);
@@ -25,6 +20,39 @@ const Styles = styled.div`
     &:active {
       background-color: rgb(214, 78, 138);
     }
+  }
+
+  .form-control {
+    border-color: rgb(214, 78, 138);
+  }
+
+  .form-control::-webkit-input-placeholder {
+    color: darkgray;
+    &:focus {
+      color: darkgray;
+
+    }
+  }
+
+  .modal-content {
+    background-color: rgb(43, 46, 47);
+    color: white;
+  }
+
+  .modal-header {
+    border-bottom: 1px solid rgb(214, 78, 138);
+  }
+
+`;
+
+const Styles = styled.div`
+  a {
+    text-decoration: none;
+    color: #ffffff;
+  }
+
+  hr {
+    background-color: grey;
   }
 `;
 

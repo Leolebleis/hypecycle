@@ -13,7 +13,17 @@ const login = async (credentials) => {
   return response
 }
 
+const createArticle = async (article) => {
+  const response = fetch(FUNCTIONS_PATH + "create-article", {
+    body: JSON.stringify(article),
+    method: "POST"
+  });
+
+  return response;
+}
+
 export default {
   getAll: getAll,
-  login: login
+  login: login,
+  createArticle: createArticle
 }

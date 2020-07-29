@@ -86,6 +86,8 @@ function App() {
             </Row>
           </Link>
 
+          <hr />
+
           <Switch>
             <Route exact path="/">
               <Home articles={articles} />
@@ -116,7 +118,7 @@ function App() {
               <Form.Control type="password" autoComplete="current-password" placeholder="Enter your password" />
             </Form.Group>
 
-            <Button variant="primary" type="submit">
+            <Button type="submit" >
               Submit
             </Button>
 
