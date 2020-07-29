@@ -12,9 +12,9 @@ exports.handler = async (event, context) => {
 
   const credentials = JSON.parse(event.body)
 
-  return client.query(q.Paginate(q.Match(q.Index('login'), credentials.user, credentials.password)))
+  return client.query(q.Get(q.Match(q.Index('login'), credentials.user, credentials.password)))
     .then(response => {
-      console.log("login sucessful", response.data)
+      console.log("login sucessful", response)
 
       if (response.data.length !== 0) {
         return {

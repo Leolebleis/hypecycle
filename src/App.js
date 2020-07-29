@@ -23,6 +23,7 @@ function App() {
   let [articles, setArticles] = useState([]);
   let [showLoginModal, setShowLoginModal] = useState(false)
   let [showArticleModal, setShowArticleModal] = useState(false)
+  let [activeUser, setActiveUser] = useState()
 
   useEffect(() => {
     (async () => {
@@ -34,7 +35,6 @@ function App() {
           const bDate = new Date(secondDate[2], secondDate[1] - 1, secondDate[0])
           return aDate - bDate
         }).map(article => {
-          console.log("article", article)
           return {
             ...article.data,
             timestamp: article.ts
@@ -60,11 +60,11 @@ function App() {
 
     await api.login(credentials)
       .then(response => {
-        if (response.status === 200) {
-          console.log("successful", response)
-          setShowArticleModal(true)
-        } else {
+        if (response.name === "NotFound") {
           console.log("error", response)
+        } else {
+          setShowArticleModal(true)
+          setActiveUser(response.data)
         }
       })
   }
@@ -110,12 +110,12 @@ function App() {
           <Form onSubmit={event => submitLogin(event)}>
             <Form.Group controlId="username">
               <Form.Label>Username</Form.Label>
-              <Form.Control type="text" autoComplete="username" placeholder="Enter your username" />
+              <Form.Control type="text" autoComplete="username" placeHolder="Enter your username" />
             </Form.Group>
 
             <Form.Group controlId="password" >
               <Form.Label>Password</Form.Label>
-              <Form.Control type="password" autoComplete="current-password" placeholder="Enter your password" />
+              <Form.Control type="password" autoComplete="current-password" placeHolder="Enter your password" />
             </Form.Group>
 
             <Button type="submit" >
@@ -131,7 +131,7 @@ function App() {
         style={{ color: "black" }}
         show={showArticleModal}
         onHide={handleCloseArticleModal} >
-        <MarkdownEditor />
+        <MarkdownEditor user={activeUser} />
       </Modal>
     </Layout>
   );

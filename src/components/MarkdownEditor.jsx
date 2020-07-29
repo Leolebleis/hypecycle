@@ -5,7 +5,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import api from "../utils/api";
 
-export default () => {
+export default (props) => {
   let [article, setArticle] = useState();
 
   let handleChange = (editor, data, value) => {
@@ -18,16 +18,19 @@ export default () => {
     console.log("article", article);
 
     await api
-      .createArticle({
-        title: event.target.title.value,
-        description: event.target.description.value,
-        image: event.target.picture.value,
-        content: article,
-        path: event.target.path.value,
-        createdAt: new Date(Date.now()).toLocaleDateString("en-GB"),
-        updatedAt: new Date(Date.now()).toLocaleDateString("en-GB"),
-        hashtags: event.target.hashtags.value.split(";"),
-      })
+      .createArticle(
+        {
+          title: event.target.title.value,
+          description: event.target.description.value,
+          image: event.target.picture.value,
+          content: article,
+          path: event.target.path.value,
+          createdAt: new Date(Date.now()).toLocaleDateString("en-GB"),
+          updatedAt: new Date(Date.now()).toLocaleDateString("en-GB"),
+          hashtags: event.target.hashtags.value.split(";"),
+        },
+        props.user
+      )
       .then((response) => {
         console.log("response", response);
       });
@@ -42,11 +45,11 @@ export default () => {
         <Form onSubmit={(event) => submitArticle(event)}>
           <Form.Group controlId="title">
             <Form.Label>Title</Form.Label>
-            <Form.Control type="text" placeholder="Enter the title" />
+            <Form.Control type="text" placeHolder="Enter the title" />
           </Form.Group>
           <Form.Group controlId="path">
             <Form.Label>Path</Form.Label>
-            <Form.Control type="text" placeholder="Enter the path" />
+            <Form.Control type="text" placeHolder="Enter the path" />
           </Form.Group>
           <Form.Group controlId="description">
             <Form.Label>Description</Form.Label>
@@ -60,7 +63,6 @@ export default () => {
             <Form.Label>Picture</Form.Label>
             <Form.Control type="text" placeHolder="Enter picture URL" />
           </Form.Group>
-
           <Button type="submit">Send</Button>
         </Form>
       </Modal.Body>

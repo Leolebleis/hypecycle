@@ -6,16 +6,20 @@ const getAll = async () => {
 }
 
 const login = async (credentials) => {
-  const response = fetch(FUNCTIONS_PATH + "login", {
+  const response = await fetch(FUNCTIONS_PATH + "login", {
     body: JSON.stringify(credentials),
     method: "POST"
   });
-  return response
+  return response.json();
 }
 
-const createArticle = async (article) => {
+const createArticle = async (article, user) => {
+  const data = {
+    article: article,
+    user: user
+  }
   const response = fetch(FUNCTIONS_PATH + "create-article", {
-    body: JSON.stringify(article),
+    body: JSON.stringify(data),
     method: "POST"
   });
 
