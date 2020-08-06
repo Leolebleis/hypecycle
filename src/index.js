@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import Analytics from 'analytics'
-import simpleAnalyticsPlugin from '@analytics/simple-analytics'
+import simpleAnalyticsPlugin from 'analytics-plugin-simple-analytics'
 
 const analytics = Analytics({
   app: 'hypecycle',
