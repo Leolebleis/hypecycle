@@ -3,7 +3,18 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import Analytics from 'analytics'
+import simpleAnalyticsPlugin from '@analytics/simple-analytics'
 
+const analytics = Analytics({
+  app: 'hypecycle',
+  plugins: [
+    simpleAnalyticsPlugin(),
+    // ... other plugins
+  ]
+})
+
+analytics.page()
 
 ReactDOM.render(
   <React.StrictMode>
