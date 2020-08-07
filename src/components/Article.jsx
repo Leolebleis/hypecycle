@@ -4,6 +4,9 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import markdownFormat from "../utils/markdownFormat";
 import styled from "styled-components";
+import analytics from "../analytics";
+
+analytics.page();
 
 const Styles = styled.div`
   img {

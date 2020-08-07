@@ -3,16 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import Analytics from 'analytics'
-import simpleAnalyticsPlugin from 'analytics-plugin-simple-analytics'
-
-const analytics = Analytics({
-  app: 'hypecycle',
-  plugins: [
-    simpleAnalyticsPlugin(),
-    // ... other plugins
-  ]
-})
+import analytics from "./analytics";
 
 analytics.page()
 
