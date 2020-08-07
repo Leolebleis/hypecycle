@@ -22,7 +22,6 @@ export default (props) => {
         {
           title: event.target.title.value,
           description: event.target.description.value,
-          image: event.target.picture.value,
           content: article,
           path: event.target.path.value,
           createdAt: new Date(Date.now()).toLocaleDateString("en-GB"),
@@ -58,10 +57,6 @@ export default (props) => {
           <Form.Group controlId="hashtags">
             <Form.Label>Hashtags</Form.Label>
             <Form.Control type="text" placeHolder="Hashtags separated by ;" />
-          </Form.Group>
-          <Form.Group controlId="picture">
-            <Form.Label>Picture</Form.Label>
-            <Form.Control type="text" placeHolder="Enter picture URL" />
           </Form.Group>
           <Button type="submit">Send</Button>
         </Form>

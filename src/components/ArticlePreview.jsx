@@ -41,7 +41,7 @@ const ArticlePreview = (props) => {
       <Row>
         <Col className="col-12">
           <Link to={`${article.path}`}>
-            <Card className="mt-5 px-5 hvr-sweep-to-right">
+            <Card className="mt-5 px-4 py-3 hvr-sweep-to-right">
               <Row className="justify-content-between">
                 <Col>
                   <code>{article.title}</code>

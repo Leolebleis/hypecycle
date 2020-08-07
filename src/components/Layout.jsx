@@ -6,7 +6,17 @@ const Global = createGlobalStyle`
     width: 80%;
     max-width: 90%;
     min-height: 100%;
+  }
 
+  html, body { 
+    height: 100%;
+  }
+
+  main {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    flex: 1;
   }
 
   .btn {
@@ -43,6 +53,10 @@ const Global = createGlobalStyle`
     border-bottom: 1px solid rgb(214, 78, 138);
   }
 
+  hr {
+    background-color: grey;
+  }
+
 `;
 
 const Styles = styled.div`
@@ -51,17 +65,14 @@ const Styles = styled.div`
     color: #ffffff;
   }
 
-  hr {
-    background-color: grey;
-  }
 `;
 
 const Layout = (props) => {
   return (
-    <>
+    <main>
       <Global />
       <Styles>{props.children}</Styles>
-    </>
+    </main>
   );
 };
 

@@ -31,12 +31,9 @@ const Article = (props) => {
           <i>{article.updatedAt}</i>
         </Col>
       </Row>
-      <img
-        src={article.image}
-        className="mx-auto d-block"
-        alt="header for article"
-      />
-
+      <Row>
+        <i className="col">{article.description}</i>
+      </Row>
       <br />
       <ReactMarkdown value="" source={markdownFormat(article.content)} />
     </Styles>

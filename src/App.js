@@ -3,6 +3,7 @@ import Article from "./components/Article"
 import Home from "./components/Home"
 import MarkdownEditor from "./components/MarkdownEditor"
 import Layout from "./components/Layout"
+import Footer from "./components/Footer"
 import Container from "react-bootstrap/Container"
 import Col from "react-bootstrap/Col"
 import Row from "react-bootstrap/Row"
@@ -72,68 +73,73 @@ function App() {
   let handleCloseArticleModal = () => setShowArticleModal(false)
 
   return (
-    <Layout>
-      <Router>
-        <Container>
-          <Link to="/">
-            <Row className="justify-content-between">
-              <Col>
-                <h1>Hypecycle;</h1>
-              </Col>
-              <Col className="d-flex justify-content-end align-items-center">
+    <>
+      <Layout>
+        <Router>
+          <Container>
+            <Row className="justify-content-between h-100 mt-4">
+              <Link to="/">
+
+                <Col className="col-auto my-auto">
+                  <h1>Hypecycle;</h1>
+                </Col>
+              </Link>
+
+              <Col className="col-auto my-auto justify-content-end align-items-center">
                 <Button onClick={() => handleShowLogin()}>Login</Button>
               </Col>
             </Row>
-          </Link>
 
-          <hr />
+            <hr />
 
-          <Switch>
-            <Route exact path="/">
-              <Home articles={articles} />
-            </Route>
-
-            {articles.map(article =>
-              <Route path={`/${article.path}`} key={article.path}>
-                <Article article={article} />
+            <Switch>
+              <Route exact path="/">
+                <Home articles={articles} />
               </Route>
-            )}
-          </Switch>
-        </Container>
-      </Router>
 
-      <Modal style={{ color: "black" }} show={showLoginModal} onHide={handleCloseLogin} >
-        <Modal.Header>
-          Login to post articles
+              {articles.map(article =>
+                <Route path={`/${article.path}`} key={article.path}>
+                  <Article article={article} />
+                </Route>
+              )}
+            </Switch>
+          </Container>
+        </Router>
+
+        <Modal style={{ color: "black" }} show={showLoginModal} onHide={handleCloseLogin} >
+          <Modal.Header>
+            Login to post articles
         </Modal.Header>
-        <Modal.Body>
-          <Form onSubmit={event => submitLogin(event)}>
-            <Form.Group controlId="username">
-              <Form.Label>Username</Form.Label>
-              <Form.Control type="text" autoComplete="username" placeHolder="Enter your username" />
-            </Form.Group>
+          <Modal.Body>
+            <Form onSubmit={event => submitLogin(event)}>
+              <Form.Group controlId="username">
+                <Form.Label>Username</Form.Label>
+                <Form.Control type="text" autoComplete="username" placeHolder="Enter your username" />
+              </Form.Group>
 
-            <Form.Group controlId="password" >
-              <Form.Label>Password</Form.Label>
-              <Form.Control type="password" autoComplete="current-password" placeHolder="Enter your password" />
-            </Form.Group>
+              <Form.Group controlId="password" >
+                <Form.Label>Password</Form.Label>
+                <Form.Control type="password" autoComplete="current-password" placeHolder="Enter your password" />
+              </Form.Group>
 
-            <Button type="submit" >
-              Submit
+              <Button type="submit" >
+                Submit
             </Button>
 
-          </Form>
-        </Modal.Body>
-      </Modal>
+            </Form>
+          </Modal.Body>
+        </Modal>
 
-      <Modal
-        dialogClassName="modal-90w"
-        style={{ color: "black" }}
-        show={showArticleModal}
-        onHide={handleCloseArticleModal} >
-        <MarkdownEditor user={activeUser} />
-      </Modal>
-    </Layout>
+        <Modal
+          dialogClassName="modal-90w"
+          style={{ color: "black" }}
+          show={showArticleModal}
+          onHide={handleCloseArticleModal} >
+          <MarkdownEditor user={activeUser} />
+        </Modal>
+      </Layout>
+      <Footer />
+    </>
   );
 }
 
